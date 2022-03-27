@@ -462,7 +462,7 @@ namespace Bonobo.Git.Server.Controllers
                 var name = PathEncoder.Decode(encodedName);
                 string referenceName;
                 int totalCount;
-                var commits = browser.GetCommits(name, page.Value, 10, out referenceName, out totalCount);
+                var commits = browser.GetCommits(name, page.Value, 50, out referenceName, out totalCount);
                 PopulateBranchesData(browser, referenceName);
                 ViewBag.TotalCount = totalCount;
 
