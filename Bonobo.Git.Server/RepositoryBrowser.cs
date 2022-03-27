@@ -30,7 +30,11 @@ namespace Bonobo.Git.Server
 
         public IEnumerable<string> GetBranches()
         {
-            return _repository.Branches.Select(s => s.FriendlyName).ToList();
+            // New sorting by last commit date.
+            return _repository.Branches.OrderByDescending(x => x.Commits?.First().Committer.When).Select(s => s.FriendlyName).ToList();
+
+            // Old sorting by name.
+            //return _repository.Branches.Select(s => s.FriendlyName).ToList();
         }
 
         public IEnumerable<string> GetTags()
